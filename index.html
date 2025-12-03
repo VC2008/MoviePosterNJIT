@@ -10,6 +10,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" type='text/css' href="style.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+
 	  
 	<!-- DO NOT CHANGE ANYTHING ABOVE THIS LINE-->
 
@@ -38,17 +40,17 @@
 	            <div class="thumbnail">
 
 						<img class="poster img-fluid" />
-						<div class="imageInfo">%posterindex%</div>
+						<div class="imageInfo">{{posterindex}}</div>
 
-						<p class="title">%title% (%country%)</p>
-						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> %iscore% </p>
-						<p class="runtime">Runtime: %runtime%</p>
-						<p class="released">Released: %released% | Rated: %rating%</p>
+						<p class="title">{{title}} ({{country}})</p>
+						<p class="score"><i class="bi bi-star" aria-hidden="true"></i> {{iscore}} </p>
+						<p class="runtime">Runtime: {{runtime}}</p>
+						<p class="released">Released: {{released}} | Rated: {{rating}}</p>
 						<p class="websites">Websites: <a> imdb </a> | <a>website</a></p>
 
 			            <div class="social">
-			              <p class="likes"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> %likes%</p>
-			              <p class="dislikes"><i class="bi bi-hand-thumbs-down"></i> %dislikes%</p>
+			              <p class="likes"><i class="bi bi-hand-thumbs-up" aria-hidden="true"></i> {{likes}}</p>
+			              <p class="dislikes"><i class="bi bi-hand-thumbs-down"></i> {{dislikes}}</p>
 			            </div>
 	            </div>
 	        </div>
