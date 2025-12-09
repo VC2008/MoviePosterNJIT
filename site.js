@@ -25,7 +25,8 @@
  // This automatically imports your movies.json file and puts it into
       //   the variable: movies
 const vue_app = Vue.createApp({
-     el: '#app',
+     el: '#app_title',
+     el: '#github',
       created () {
             fetch('movies.json').then(response => response.json()).then(json => {
                   this.movies = json
@@ -37,16 +38,50 @@ const vue_app = Vue.createApp({
             // This holds your movies.json data.
             movies: [],
             title: "Movies that i remember watching",
-            owner: "Vincent Colon"
+            owner: "Vincent Colon",
+            github: "https://github.com/VC2008",
       }
     },
-      methods: {
-         resetFields: function{
+       methods: {
+    runtime: (time) => `${Math.floor(time / 60)}h, ${time % 60}m`,
+    released: ([day, month, year]) =>
+      `${months[month - 1]} ${day}${(() => {
+        const num = day.toString().split("").at(-1);
+        if (num === "1") return "st";
+        else if (num === "2") return "nd";
+        else if (num === "3") return "rd";
+        else return "th";
+      })()}, ${year}`,
+    up: function (i, which) {
+      this.active(
+        document.getElementsByClassName(which)[i],
+        ++this.movies[i][which]
+      );
+    },
+    switchImg: function (i) {
+      this.movies[i].posterIndex =
+        (this.movies[i].posterIndex + 1) % this.movies[i].posters.length;
+    },
+    active: (e, num) =>
+      num > 0 ? e.classList.add("active") : e.classList.remove("active"),
+    toTop: () => (window.location = "#vue_app"),
+  },
+});
 
+vue_app.mount("#vue_app");
 
-
-         }
-      }
-})
-
-vue_app.mount("#vue_app")
+function sizer() {
+  const height = new Set();
+  document.querySelectorAll(".cardContainer").forEach((e, i) => {
+    const header = Array.from(document.querySelectorAll(".film-header"))[i];
+    height.add(header.offsetHeight);
+  });
+  if (height.size > 0) {
+    const maxheight = Array.from(height)
+      .sort((a, b) => a - b)
+      .at(-1);
+    document.querySelectorAll(".film-header").forEach((e) => {
+      e.setAttribute("style", `height: ${maxheight}px`);
+    });
+  }
+}
