@@ -24,18 +24,21 @@
 
  // This automatically imports your movies.json file and puts it into
       //   the variable: movies
+const { nextTick } = Vue;
 const vue_app = Vue.createApp({
-     el: '#app_title',
-     el: '#github',
-      created () {
-            fetch('movies.json').then(response => response.json()).then(json => {
-                  this.movies = json
-            })
-      },
+  async created() {
+    this.movies = await (await fetch("movies.json")).json();
+    await nextTick();
+    const tooltipTriggerList = document.querySelectorAll(
+      '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
+    sizer(), (window.onresize = sizer);
+  },
       data() {
-
         return {
-            // This holds your movies.json data.
             movies: [],
             title: "Movies that i remember watching",
             owner: "Vincent Colon",
@@ -43,15 +46,17 @@ const vue_app = Vue.createApp({
       }
     },
        methods: {
-    runtime: (time) => `${Math.floor(time / 60)}h, ${time % 60}m`,
-    released: ([day, month, year]) =>
-      `${months[month - 1]} ${day}${(() => {
-        const num = day.toString().split("").at(-1);
-        if (num === "1") return "st";
+    runtime: (time) => `${Math.floor(time / 60)}h ${time % 60}m`,
+    released: ([d, m, y]) =>
+      `${months[m - 1]} ${d}${(() => {
+        const lastTwo = d.toString().slice(-2);
+        const num = lastTwo.slice(-1);
+        if (["11", "12", "13"].includes(lastTwo)) return "th";
+        else if (num === "1") return "st";
         else if (num === "2") return "nd";
         else if (num === "3") return "rd";
         else return "th";
-      })()}, ${year}`,
+      })()}, ${y}`,
     up: function (i, which) {
       this.active(
         document.getElementsByClassName(which)[i],
@@ -66,22 +71,22 @@ const vue_app = Vue.createApp({
       num > 0 ? e.classList.add("active") : e.classList.remove("active"),
     toTop: () => (window.location = "#vue_app"),
   },
+  computed: {
+    title: function () {
+      return `Imdb + Remy's Top ${this.movies.length} Movies`;
+    },
+  },
 });
-
 vue_app.mount("#vue_app");
-
 function sizer() {
   const height = new Set();
-  document.querySelectorAll(".cardContainer").forEach((e, i) => {
-    const header = Array.from(document.querySelectorAll(".film-header"))[i];
-    height.add(header.offsetHeight);
+  const headers = Array.from(document.querySelectorAll(".film-header"));
+  headers.forEach((e) => {
+    e.removeAttribute("style");
+    height.add(e.offsetHeight);
   });
   if (height.size > 0) {
-    const maxheight = Array.from(height)
-      .sort((a, b) => a - b)
-      .at(-1);
-    document.querySelectorAll(".film-header").forEach((e) => {
-      e.setAttribute("style", `height: ${maxheight}px`);
-    });
+    const mH = Array.from(height).sort().at(-1);
+    headers.forEach((e) => e.setAttribute("style", `height: ${mH}px`));
   }
 }
