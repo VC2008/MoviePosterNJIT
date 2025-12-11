@@ -68,5 +68,47 @@
             "likes": 812,
             "dislikes": 101,
             "posterindex": 0
+      },
+      {
+            "title": "Blue's Brothers",
+            "iscore": 7.9,
+            "rating": "R",
+            "runtime": 195,
+            "released": [1980, 11, 30],
+            "country": "USA",
+            "posters": ["img/bluesbrothers.jpg", "img/The-Blues-Brothers-Vintage-Movie-Poster-Original_c4acb4b8.jpg" ],
+            "imdb": "https://www.imdb.com/title/tt0080455/?ref_=fn_t_1",
+            "website": "https://www.bluesbrothersofficialsite.com/",
+            "likes": 812,
+            "dislikes": 101,
+            "posterindex": 0
+      },
+      {
+            "title": "Forest Gump",
+            "iscore": 8.8,
+            "rating": "PG-13",
+            "runtime": 144,
+            "released": [1994, 7, 6],
+            "country": "USA",
+            "posters": ["img/forestgump.jpg", "img/forestgump2.jpg"],
+            "imdb": "https://www.imdb.com/title/tt0109830/?ref_=fn_t_1",
+            "website": "https://www.rottentomatoes.com/m/forrest_gump",
+            "likes": 812,
+            "dislikes": 101,
+            "posterindex": 0
+      },
+      {
+            "title": "War of The Worlds (2025)",
+            "iscore": 2.5,
+            "rating": "R",
+            "runtime": 195,
+            "released": [1980, 11, 30],
+            "country": "USA",
+            "posters": ["img/WOTW2025.jpg"],
+            "imdb": "https://www.imdb.com/title/tt13186306/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_war%2520of%2520the%2520worlds",
+            "website": "https://www.bluesbrothersofficialsite.com/",
+            "likes": 47,
+            "dislikes": 301,
+            "posterindex": 0
       }
 ]

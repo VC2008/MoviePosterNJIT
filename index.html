@@ -46,9 +46,8 @@
                 <p class="title">
                   {{movie.title}} <span>({{movie.country}})</span>
                 </p>
-                <div
-                  class="ratingStar data-bs-toggle="tooltip"
-                  data-bs-title="IMDB Score""
+                <div class="ratingStar" data-bs-toggle="tooltip"
+ data-bs-title="IMDB Score"
                   data-bs-toggle="tooltip"
                   data-bs-title="IMDB Score"
                 >
@@ -57,10 +56,7 @@
                 </div>
               </div>
               <div class="thumbnail">
-                <img
-                  class="poster img-fluid"
-                  :src="movie.posters[movie.posterIndex]"
-                  @click="switchImg(i)"
+                <imgclass= poster img-fluid :src="movie.posters[movie.posterIndex]" @click="switchImg(i)"
                   data-bs-toggle="tooltip"
                   :data-bs-title="`Quote: ${movie.quote}`"
                 />
@@ -78,16 +74,11 @@
                 </p>
 
                 <div class="social">
-                  <p
-                    class="rating"
-                    data-bs-toggle="tooltip"
-                    data-bs-title="MPAA Rating"
-                  >
+                  <p class="rating" data-bs-toggle="tooltip" data-bs-title="MPAA Rating">
                     {{movie.rating}}
                   </p>
                   <p class="likes" @click="up(i, 'likes')">
-                    <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i
-                    >&nbsp; {{movie.likes}}
+                    <i class="bi bi-hand-thumbs-up" aria-hidden="true"></i>&nbsp; {{movie.likes}}
                   </p>
                   <p class="dislikes" @click="up(i, 'dislikes')">
                     <i class="bi bi-hand-thumbs-down"></i>&nbsp;
@@ -100,12 +91,7 @@
         </div>
         <div class="footer">
           <div class="container">
-            <a
-              id="github"
-              class="btn btn-lg btn-warning"
-              :href="github"
-              target="_blank"
-            >
+            <a id="github" class="btn btn-lg btn-warning" :href="github"target="_blank">
               <i class="bi bi-github me-2"></i>{{owner}}
             </a>
           </div>
